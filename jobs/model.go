@@ -24,6 +24,7 @@ const (
 	JOB0000 string = "JOB0000" //unknown
 	JOB1001 string = "JOB1001" //invalid
 	JOB1002 string = "JOB1002" //item not found
+	JOB2001 string = "JOB2001" //connect elastic
 )
 
 type JobError struct {
@@ -40,6 +41,7 @@ const (
 	ERROR_UNKNOWN ErrorType = iota
 	ERROR_HTTP
 	ERROR_INVALID
+	ERROR_ELASTIC_SEARCH
 )
 
 //NewJobErrorr JobError constructor
@@ -73,4 +75,9 @@ func NewInvalidRequestError(msg string) *JobError {
 //NewNotFoundError constructor not found request
 func NewNotFoundError(msg string) *JobError {
 	return newJobError(JOB1002, msg, ERROR_INVALID)
+}
+
+//NewUnknownError constructor unknown error
+func NewElasticsearchConnectError(msg string) *JobError {
+	return newJobError(JOB2001, msg, ERROR_ELASTIC_SEARCH)
 }

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -67,6 +68,13 @@ func postJobs(jobService *jobs.JobsService) http.HandlerFunc {
 }
 
 func main() {
+	showEnvConfigs := flag.Bool("env", false, "show env variables")
+	flag.Parse()
+	if showEnvConfigs != nil && *showEnvConfigs {
+		printEnv()
+		return
+	}
+
 	jobService := jobs.NewJobServices()
 
 	mux := goji.NewMux()
@@ -114,6 +122,8 @@ func getErrorStatusCode(errorType jobs.ErrorType) int {
 	switch errorType {
 	case jobs.ERROR_INVALID:
 		return http.StatusBadRequest
+	case jobs.ERROR_ELASTIC_SEARCH:
+		return http.StatusInternalServerError
 	default:
 		return http.StatusInternalServerError
 	}
@@ -168,4 +178,11 @@ func (lrw *loggingResponseWriter) WriteHeader(code int) {
 func (lrw *loggingResponseWriter) Write(c []byte) (int, error) {
 	lrw.size = len(c)
 	return lrw.ResponseWriter.Write(c)
+}
+
+func printEnv() {
+	fmt.Println("Environment variables for jobs server:")
+	for _, v := range config.List() {
+		fmt.Printf("\t'%s', type: %s (default: %s)\n", v.Name, v.Type, v.DefaultVal)
+	}
 }

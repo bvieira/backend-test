@@ -2,7 +2,6 @@ package jobs
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"log"
 	"reflect"
@@ -78,11 +77,12 @@ func (e *ElasticSearch) InitIndex(ctx context.Context, name, mapping string) err
 	if e.client() == nil {
 		return NewElasticsearchConnectError("could not connect on elastic search")
 	}
-	if exists, err := e.client().IndexExists(name).Do(ctx); err != nil || exists {
+	if exists, err := e.client().IndexExists(name).Do(ctx); err != nil {
 		return NewElasticsearchAccessError(fmt.Sprintf("error checking if index exists on elasticsearch, message: %s", err.Error()))
-	}
-	if _, err := e.client().CreateIndex(name).Body(mapping).Do(ctx); err != nil {
-		return NewElasticsearchAccessError(fmt.Sprintf("error initializing index on elasticsearch, message: %s", err.Error()))
+	} else if !exists {
+		if _, err := e.client().CreateIndex(name).Body(mapping).Do(ctx); err != nil {
+			return NewElasticsearchAccessError(fmt.Sprintf("error initializing index on elasticsearch, message: %s", err.Error()))
+		}
 	}
 	return nil
 }
@@ -102,7 +102,7 @@ func (e *ElasticSearch) Add(ctx context.Context, index string, content Indexable
 // Search search content on index
 func (e *ElasticSearch) Search(ctx context.Context, index string, sort *Sort, queries ...Query) ([]json.RawMessage, error) {
 	if len(queries) < 1 {
-		panic(errors.New("should never call search without a query"))
+		return nil, NewInvalidRequestError("queries is empty")
 	}
 	if e.client() == nil {
 		return nil, NewElasticsearchConnectError("could not connect on elastic search")

@@ -9,13 +9,13 @@ List of technologies that I chose to work:
 * docker/docker-compose - container, helps to guarantees the environment creation and isolates the development
 * govendor - simple go tool for vendor control
 
-# Improvements
-Somethings that should be done for a better performance and for production:
+# Improvements needed
 * process asynchronous jobs received on 'Add jobs', send in bulks using more than one goroutine
 * authentication on 'Add jobs'
 * 'Delete jobs' service
 * custom configuration for elasticsearch docker
 * configure docker to be able to use golang elastic client's sniff (https://github.com/olivere/elastic/wiki/Docker)
+* ...
 
 # Build
 ```sh

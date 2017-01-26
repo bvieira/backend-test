@@ -54,7 +54,33 @@ index jobs
 
 ### Example:
 ```sh
-$ 
+$ curl -v -H "Content-Type: application/json" -X POST localhost:8080/jobs -d '{"docs":[{"title":"Analista de TI","description":"<li> Conhecimento aprofundado em Linux Server (IPTables, proxy, mail, samba) e Windows Server(MS-AD, WTS, compartilhamentos).</li>","salario":3200.5,"cidade":["Joinville"],"cidadeFormated":["Joinville - SC (1)"]}]}'
+> POST /jobs HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.43.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 264
+>
+< HTTP/1.1 204 No Content
+< Date: Thu, 26 Jan 2017 02:02:39 GMT
+<
+```
+
+```sh
+$ curl -v -H "Content-Type: application/json" -X POST localhost:8080/jobs -d @vagas.json
+> POST /jobs HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.43.0
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 686934
+> Expect: 100-continue
+>
+< HTTP/1.1 100 Continue
+< HTTP/1.1 204 No Content
+< Date: Thu, 26 Jan 2017 02:08:43 GMT
+<
 ```
 
 
@@ -82,7 +108,18 @@ obs: either content and city are not required, but at least one should be define
 
 ### Example:
 ```sh
-$ 
+$ curl -v "http://localhost:8080/jobs?content=analista&sort=asc"
+> GET /jobs?content=analista&sort=asc HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.43.0
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+< Date: Thu, 26 Jan 2017 02:04:51 GMT
+< Content-Length: 256
+<
+[{"title":"Analista de TI","description":"<li> Conhecimento aprofundado em Linux Server (IPTables, proxy, mail, samba) e Windows Server(MS-AD, WTS, compartilhamentos).</li>","salario":3200.5,"cidade":["Joinville"],"cidadeFormated":["Joinville - SC (1)"]}] 
 ```
 
 # Schema

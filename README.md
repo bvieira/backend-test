@@ -5,10 +5,17 @@ c-jobs
 List of technologies that I chose to work:
 * golang - performance, low memory consumption, fast, fun, opensource, easy to deploy, clean and much more =)
 * elasticsearch - the problem was text searching, so elasticsearch was a good option
-* docker/docker-compose - container, helps to guarantees the environment creation and isolates the development
 * goji - request multiplexer
+* docker/docker-compose - container, helps to guarantees the environment creation and isolates the development
 * govendor - simple go tool for vendor control
 
+# Improvements
+Somethings that should be done for a better performance and for production:
+* process asynchronous jobs received on 'Add jobs', send in bulks using more than one goroutine
+* authentication on 'Add jobs'
+* 'Delete jobs' service
+* custom configuration for elasticsearch docker
+* configure docker to be able to use golang elastic client's sniff (https://github.com/olivere/elastic/wiki/Docker)
 
 # Build
 ```sh
@@ -56,7 +63,7 @@ if something went wrong on request, the application should return http code diff
 
 
 ## Add jobs
-index jobs
+index jobs on repository, create if ID do not exists, updates otherwise
 
 ### Request:
 `POST` /jobs
@@ -144,6 +151,8 @@ $ curl -v "http://localhost:8080/jobs?content=analista&sort=asc"
 
 # Schema
 ## Jobs Request
+
+Job ID: composition of 'title', 'salario' and 'cidade'. Each field is normalized, any accent or symbol is removed.
 
 | header   | value           |
 |-------------------|-----------------------|

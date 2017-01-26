@@ -123,7 +123,9 @@ func getErrorStatusCode(errorType jobs.ErrorType) int {
 	switch errorType {
 	case jobs.ERROR_INVALID:
 		return http.StatusBadRequest
-	case jobs.ERROR_ELASTIC_SEARCH:
+	case jobs.ERROR_NOT_FOUND:
+		return http.StatusNotFound
+	case jobs.ERROR_ELASTIC_SEARCH, jobs.ERROR_PARSER:
 		return http.StatusInternalServerError
 	default:
 		return http.StatusInternalServerError

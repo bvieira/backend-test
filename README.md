@@ -45,6 +45,16 @@ $ docker-compose logs -f
 ## Error handling
 if something went wrong on request, the application should return http code different from 2xx and on body the [Error response](#error-response)
 
+| code   | description           |
+|-------------------|-----------------------|
+| `JOB0000`         | unknown  error |
+| `JOB1001`         | invalid request error |
+| `JOB1002`         | not found error |
+| `JOB1003`         | parser error  |
+| `JOB2001`         | elastic search connect error  |
+| `JOB2002`         | elastic search access error  |
+
+
 ## Add jobs
 index jobs
 

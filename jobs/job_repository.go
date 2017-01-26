@@ -3,6 +3,7 @@ package jobs
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"sync"
 )
 
@@ -71,7 +72,7 @@ func toJobs(searchResult []json.RawMessage) ([]Job, error) {
 		var job Job
 		perr := json.Unmarshal(r, &job)
 		if perr != nil {
-			return nil, perr
+			return nil, NewParserError(fmt.Sprintf("error mapping search result to job, message: %s", perr.Error()))
 		}
 		jobs = append(jobs, job)
 	}

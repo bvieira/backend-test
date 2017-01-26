@@ -23,8 +23,10 @@ func (j Job) ID() string {
 const (
 	JOB0000 string = "JOB0000" //unknown
 	JOB1001 string = "JOB1001" //invalid
-	JOB1002 string = "JOB1002" //item not found
+	JOB1002 string = "JOB1002" //not found
+	JOB1003 string = "JOB1003" //parser error
 	JOB2001 string = "JOB2001" //connect elastic
+	JOB2002 string = "JOB2002" //access elastic
 )
 
 type JobError struct {
@@ -41,6 +43,8 @@ const (
 	ERROR_UNKNOWN ErrorType = iota
 	ERROR_HTTP
 	ERROR_INVALID
+	ERROR_NOT_FOUND
+	ERROR_PARSER
 	ERROR_ELASTIC_SEARCH
 )
 
@@ -74,10 +78,20 @@ func NewInvalidRequestError(msg string) *JobError {
 
 //NewNotFoundError constructor not found request
 func NewNotFoundError(msg string) *JobError {
-	return newJobError(JOB1002, msg, ERROR_INVALID)
+	return newJobError(JOB1002, msg, ERROR_NOT_FOUND)
 }
 
-//NewUnknownError constructor unknown error
+//NewParserError constructor parser error
+func NewParserError(msg string) *JobError {
+	return newJobError(JOB1003, msg, ERROR_PARSER)
+}
+
+//NewElasticsearchConnectError constructor elasticsearch connect error
 func NewElasticsearchConnectError(msg string) *JobError {
 	return newJobError(JOB2001, msg, ERROR_ELASTIC_SEARCH)
+}
+
+//NewElasticsearchAccessError constructor elasticsearch access error
+func NewElasticsearchAccessError(msg string) *JobError {
+	return newJobError(JOB2002, msg, ERROR_ELASTIC_SEARCH)
 }

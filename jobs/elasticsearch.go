@@ -3,6 +3,7 @@ package jobs
 import (
 	"context"
 	"errors"
+	"fmt"
 	"log"
 	"reflect"
 	"strings"
@@ -78,10 +79,12 @@ func (e *ElasticSearch) InitIndex(ctx context.Context, name, mapping string) err
 		return NewElasticsearchConnectError("could not connect on elastic search")
 	}
 	if exists, err := e.client().IndexExists(name).Do(ctx); err != nil || exists {
-		return err
+		return NewElasticsearchAccessError(fmt.Sprintf("error checking if index exists on elasticsearch, message: %s", err.Error()))
 	}
-	_, err := e.client().CreateIndex(name).Body(mapping).Do(ctx)
-	return err
+	if _, err := e.client().CreateIndex(name).Body(mapping).Do(ctx); err != nil {
+		return NewElasticsearchAccessError(fmt.Sprintf("error initializing index on elasticsearch, message: %s", err.Error()))
+	}
+	return nil
 }
 
 // Add add content do index
@@ -90,8 +93,10 @@ func (e *ElasticSearch) Add(ctx context.Context, index string, content Indexable
 		return NewElasticsearchConnectError("could not connect on elastic search")
 	}
 
-	_, err := e.client().Index().Index(index).Type(strings.ToLower(reflect.TypeOf(content).Name())).Id(content.ID()).BodyJson(content).Do(ctx)
-	return err
+	if _, err := e.client().Index().Index(index).Type(strings.ToLower(reflect.TypeOf(content).Name())).Id(content.ID()).BodyJson(content).Do(ctx); err != nil {
+		return NewElasticsearchAccessError(fmt.Sprintf("error indexing on elasticsearch, message: %s", err.Error()))
+	}
+	return nil
 }
 
 // Search search content on index
@@ -109,7 +114,7 @@ func (e *ElasticSearch) Search(ctx context.Context, index string, sort *Sort, qu
 	}
 	searchResult, err := s.Do(ctx)
 	if err != nil {
-		return nil, err
+		return nil, NewElasticsearchAccessError(fmt.Sprintf("error searching on elasticsearch, message: %s", err.Error()))
 	}
 
 	var result []json.RawMessage

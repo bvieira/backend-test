@@ -82,7 +82,8 @@ func main() {
 	mux.Use(logMiddleware)
 	mux.HandleFunc(pat.Get("/jobs"), getJobs(jobService))
 	mux.HandleFunc(pat.Post("/jobs"), postJobs(jobService))
-
+	log.Printf("message=\"starting server\" kind=startup version=%s", config.Version)
+	defer log.Printf("message=\"stopping server\" kind=startup version=%s", config.Version)
 	gracehttp.Serve(&http.Server{Addr: fmt.Sprintf(":%d", config.Get().Port), Handler: mux})
 }
 

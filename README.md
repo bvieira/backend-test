@@ -10,22 +10,30 @@ List of technologies that I chose to work:
 
 # Build
 ```sh
-$ 
+$ ./build.sh linux
+```
+```sh
+$ ./build.sh darwin
+```
+
+### Environment Variables
+```sh
+$ ./jobs-server -env
 ```
 
 # Run
 ```sh
-$ 
+$ ./start.sh
 ```
 
 # Stop
 ```sh
-$ 
+$ docker-compose stop
 ```
 
 # Logs
 ```sh
-$ 
+$ docker-compose logs -f
 ```
 
 # API

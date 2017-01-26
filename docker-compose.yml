@@ -1,0 +1,19 @@
+version: '2'
+services:
+  elasticsearch:
+    image: elasticsearch
+    volumes:
+      - ./data/:/usr/share/elasticsearch/data/
+    hostname: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  jobs-server:
+    build: .
+    environment:
+      - JOBS_ELASTICSEARCH_SERVER=http://elasticsearch:9200
+    links:
+      - elasticsearch:elasticsearch
+    ports:
+      - "8080:8080/tcp"

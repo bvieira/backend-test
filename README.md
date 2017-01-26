@@ -6,6 +6,8 @@ List of technologies that I chose to work:
 * golang - performance, low memory consumption, fast, fun, opensource, easy to deploy, clean and much more =)
 * elasticsearch - the problem was text searching, so elasticsearch was a good option
 * docker/docker-compose - container, helps to guarantees the environment creation and isolates the development
+* goji - request multiplexer
+* govendor - simple go tool for vendor control
 
 
 # Build

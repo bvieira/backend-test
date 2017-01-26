@@ -19,10 +19,11 @@ type config struct {
 	APP  string `env:"JOBS_APP_NAME" envDefault:"c-jobs"`
 	Port int    `env:"JOBS_PORT" envDefault:"8080"`
 
-	ElasticSearchServer           string `env:"JOBS_ELASTICSEARCH_SERVER" envDefault:"http://localhost:9200"`
-	ElasticSearchMaxRetry         int    `env:"JOBS_ELASTICSEARCH_MAX_RETRY" envDefault:"3"`
-	ElasticSearchSniff            bool   `env:"JOBS_ELASTICSEARCH_SNIFF" envDefault:"false"`
-	ElasticSearchIndexMappingPath string `env:"JOBS_ELASTICSEARCH_INDEX_MAPPING_PATH" envDefault:"cfg/jobs-mapping.json"`
+	ElasticSearchServer             string `env:"JOBS_ELASTICSEARCH_SERVER" envDefault:"http://localhost:9200"`
+	ElasticSearchMaxRetry           int    `env:"JOBS_ELASTICSEARCH_MAX_RETRY" envDefault:"3"`
+	ElasticSearchSniff              bool   `env:"JOBS_ELASTICSEARCH_SNIFF" envDefault:"false"`
+	ElasticSearchReconnectRetryTime int    `env:"JOBS_ELASTICSEARCH_RECONNECT_RETRY_TIME_SECONDS" envDefault:"5"`
+	ElasticSearchIndexMappingPath   string `env:"JOBS_ELASTICSEARCH_INDEX_MAPPING_PATH" envDefault:"cfg/jobs-mapping.json"`
 }
 
 var mutex sync.RWMutex

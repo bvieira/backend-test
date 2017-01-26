@@ -21,7 +21,7 @@ func NewJobServices() *JobsService {
 	}
 
 	return &JobsService{
-		repository: newElasticSearchJobRepository(newElasticSearch(config.Get().ElasticSearchServer, config.Get().ElasticSearchMaxRetry, config.Get().ElasticSearchSniff), string(mapping)),
+		repository: newElasticSearchJobRepository(newElasticSearch(config.Get().ElasticSearchServer, config.Get().ElasticSearchMaxRetry, config.Get().ElasticSearchSniff, config.Get().ElasticSearchReconnectRetryTime), string(mapping)),
 	}
 }
 

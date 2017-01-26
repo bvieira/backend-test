@@ -1,0 +1,121 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "uExxGiC9q/9vX+Q2IGs7eP05XsU=",
+			"path": "github.com/caarlos0/env",
+			"revision": "8030fe5519ecb59ee38cb3c534b86dc868f23262",
+			"revisionTime": "2016-07-06T17:25:53Z"
+		},
+		{
+			"checksumSHA1": "imR2wF388/0fBU6RRWx8RvTi8Q8=",
+			"path": "github.com/facebookgo/clock",
+			"revision": "600d898af40aa09a7a93ecb9265d87b0504b6f03",
+			"revisionTime": "2015-04-10T01:09:13Z"
+		},
+		{
+			"checksumSHA1": "j2O1k8Kvw6btFkJKt45nQQuAHM0=",
+			"path": "github.com/facebookgo/grace/gracehttp",
+			"revision": "5729e484473f52048578af1b80d0008c7024089b",
+			"revisionTime": "2016-09-26T23:17:15Z"
+		},
+		{
+			"checksumSHA1": "nj3ykV8Em7WOfvHNIo/XNTT9LOM=",
+			"path": "github.com/facebookgo/grace/gracenet",
+			"revision": "5729e484473f52048578af1b80d0008c7024089b",
+			"revisionTime": "2016-09-26T23:17:15Z"
+		},
+		{
+			"checksumSHA1": "8SgB/r3Cf+OvXmg8bIPnlEq03Bs=",
+			"path": "github.com/facebookgo/httpdown",
+			"revision": "a3b1354551a26449fbe05f5d855937f6e7acbd71",
+			"revisionTime": "2016-03-23T22:10:27Z"
+		},
+		{
+			"checksumSHA1": "SzXvrWxavFo8HD/2hnbdu17C3VE=",
+			"path": "github.com/facebookgo/stats",
+			"revision": "1b76add642e42c6ffba7211ad7b3939ce654526e",
+			"revisionTime": "2015-10-06T22:16:25Z"
+		},
+		{
+			"checksumSHA1": "OvrNwcBO+xO4FZ7eMbazho1C3t0=",
+			"path": "goji.io",
+			"revision": "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd",
+			"revisionTime": "2016-11-14T00:05:42Z"
+		},
+		{
+			"checksumSHA1": "WjH6BtYreucaiAqweH8EVTuzfq4=",
+			"path": "goji.io/internal",
+			"revision": "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd",
+			"revisionTime": "2016-11-14T00:05:42Z"
+		},
+		{
+			"checksumSHA1": "j/mjzYLjgCcJlqCmnZIqYVKWTTY=",
+			"path": "goji.io/middleware",
+			"revision": "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd",
+			"revisionTime": "2016-11-14T00:05:42Z"
+		},
+		{
+			"checksumSHA1": "gCCLZgKj2pBECowciB75JYaJRx0=",
+			"path": "goji.io/pat",
+			"revision": "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd",
+			"revisionTime": "2016-11-14T00:05:42Z"
+		},
+		{
+			"checksumSHA1": "HiFwLEdH2hi65LxmHk2lKjA3CU8=",
+			"path": "goji.io/pattern",
+			"revision": "0d89ff54b2c18c9c4ba530e32496aef902d3c6cd",
+			"revisionTime": "2016-11-14T00:05:42Z"
+		},
+		{
+			"checksumSHA1": "9jjO5GjLa0XF/nfWihF02RoH4qc=",
+			"path": "golang.org/x/net/context",
+			"revision": "f2499483f923065a842d38eb4c7f1927e6fc6e6d",
+			"revisionTime": "2017-01-14T04:22:49Z"
+		},
+		{
+			"checksumSHA1": "WHc3uByvGaMcnSoI21fhzYgbOgg=",
+			"path": "golang.org/x/net/context/ctxhttp",
+			"revision": "f2499483f923065a842d38eb4c7f1927e6fc6e6d",
+			"revisionTime": "2017-01-14T04:22:49Z"
+		},
+		{
+			"checksumSHA1": "IV4MN7KGBSocu/5NR3le3sxup4Y=",
+			"path": "golang.org/x/text/runes",
+			"revision": "11dbc599981ccdf4fb18802a28392a8bcf7a9395",
+			"revisionTime": "2017-01-12T23:38:57Z"
+		},
+		{
+			"checksumSHA1": "ziMb9+ANGRJSSIuxYdRbA+cDRBQ=",
+			"path": "golang.org/x/text/transform",
+			"revision": "11dbc599981ccdf4fb18802a28392a8bcf7a9395",
+			"revisionTime": "2017-01-12T23:38:57Z"
+		},
+		{
+			"checksumSHA1": "Vircurgvsnt4k26havmxPM67PUA=",
+			"path": "golang.org/x/text/unicode/norm",
+			"revision": "11dbc599981ccdf4fb18802a28392a8bcf7a9395",
+			"revisionTime": "2017-01-12T23:38:57Z"
+		},
+		{
+			"checksumSHA1": "37obTHS4yHjz7+E/5e2qQQYjGQk=",
+			"path": "gopkg.in/olivere/elastic.v5",
+			"revision": "f27a28dd68c359eb20ce5918a7d976f34c18cf03",
+			"revisionTime": "2017-01-11T17:08:46Z"
+		},
+		{
+			"checksumSHA1": "4o4sDuhMGKUOvovqg1yKGNjaeJU=",
+			"path": "gopkg.in/olivere/elastic.v5/backoff",
+			"revision": "f27a28dd68c359eb20ce5918a7d976f34c18cf03",
+			"revisionTime": "2017-01-11T17:08:46Z"
+		},
+		{
+			"checksumSHA1": "pCApZfp2CeDnWbNVsyzNO62ZUXA=",
+			"path": "gopkg.in/olivere/elastic.v5/uritemplates",
+			"revision": "f27a28dd68c359eb20ce5918a7d976f34c18cf03",
+			"revisionTime": "2017-01-11T17:08:46Z"
+		}
+	],
+	"rootPath": "github.com/bvieira/c-jobs"
+}

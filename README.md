@@ -16,7 +16,7 @@ $ ./build.sh linux
 $ ./build.sh darwin
 ```
 
-### Environment Variables
+## Environment Variables
 ```sh
 $ ./jobs-server -env
 ```

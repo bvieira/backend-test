@@ -1,0 +1,32 @@
+{
+	"mappings": {
+		"job": {
+			"_all": {
+				"enabled": false
+			},
+			"properties": {
+				"title": {
+					"type": "text"
+				},
+				"description": {
+					"type": "text"
+				},
+				"salario": {
+					"type": "scaled_float",
+					"scaling_factor": 100
+				},
+				"cidade": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword"
+						}
+					}
+				},
+				"cidadeFormated": {
+					"type": "keyword"
+				}
+			}
+		}
+	}
+}

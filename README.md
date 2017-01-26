@@ -15,9 +15,12 @@ List of technologies that I chose to work:
 * 'Delete jobs' service
 * custom configuration for elasticsearch docker
 * configure docker to be able to use golang elastic client's sniff (https://github.com/olivere/elastic/wiki/Docker)
+* tests for http server
 * ...
 
 # Build
+run tests and compile
+
 ```sh
 $ ./build.sh linux
 ```
@@ -25,9 +28,16 @@ $ ./build.sh linux
 $ ./build.sh darwin
 ```
 
-## Environment Variables
+## Tests
 ```sh
-$ ./jobs-server -env
+$ docker run -v "$(pwd)":/gopath/src/github.com/bvieira/c-jobs -e "GOPATH=/gopath" -w /gopath/src/github.com/bvieira/c-jobs golang:latest sh -c "./test-coverage.sh"
+```
+
+## Environment Variables
+list all variables available
+
+```sh
+$ docker run -v "$(pwd)":/gopath/src/github.com/bvieira/c-jobs -e "GOPATH=/gopath" -w /gopath/src/github.com/bvieira/c-jobs/jobsserver/ golang:latest sh -c "go install; /gopath/bin/jobsserver -env"
 ```
 
 # Run
